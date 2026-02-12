@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API Docs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>API Documentation</h2>
+
+    <h3>Endpoint</h3>
+    <pre>POST /api/chat</pre>
+
+    <h3>Request</h3>
+<pre>{
+  "message": "Hello AI"
+}</pre>
+
+    <h3>Response</h3>
+<pre>{
+  "reply": "AI response here"
+}</pre>
+
+    <h3>Example cURL</h3>
+<pre>curl -X POST https://yourdomain.com/api/chat \
+-H "Content-Type: application/json" \
+-d '{"message":"Hello AI"}'</pre>
+
+  </div>
+</body>
+</html>
