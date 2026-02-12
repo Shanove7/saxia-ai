@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Playground</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>AI Chat Playground</h2>
+
+    <div class="chat-box" id="chat"></div>
+
+    <textarea id="input" rows="4" placeholder="Type your message..."></textarea>
+    <br><br>
+    <button onclick="send()">Send</button>
+  </div>
+
+<script>
+async function send() {
+  const input = document.getElementById("input");
+  const chat = document.getElementById("chat");
+
+  const message = input.value;
+  if (!message) return;
+
+  chat.innerHTML += "<p><b>You:</b> " + message + "</p>";
+  input.value = "";
+
+  const res = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message })
+  });
+
+  const data = await res.json();
+
+  chat.innerHTML += "<p><b>AI:</b> " + data.reply + "</p>";
+}
+</script>
+
+</body>
+</html>
